@@ -1,0 +1,58 @@
+@charset 'UTF-8';
+
+/*
+ You may not change or alter any portion of this comment or credits
+ of supporting developers from this source code or any supporting source code
+ which is considered copyrighted (c) material of the original comment or credit authors.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*/
+/**
+ * presenter module for xoops
+ *
+ * @copyright       XOOPS Project (http://xoops.org)
+ * @license         GPL 2.0 or later
+ * @package         presenter
+ * @since           2.5.5
+ * @author          XOOPS Development Team <name@site.com> - <http://xoops.org>
+ * @version         $Id: 1.0 style.css 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
+ */
+table {
+   border: 1px solid \#ccc;
+}
+
+table.presenter {
+   margin: 0;
+   padding: 2px;
+}
+
+td.fields {
+   font-family: Verdana, Tahoma, sans-serif;
+   font-size: 12px;
+   font-weight: normal;
+}
+
+div {
+   margin: 2px;
+   padding: 2px;
+}
+
+div.outer {
+   color: \#555;
+   background-color: \#eee;
+   border: 1px solid \#ccc;
+}
+
+ul > li {
+   display: inline;
+   list-style-type: none;
+   list-style-image: none;
+}
+
+li.fields {
+   display: block;
+   list-style-type: none;
+   list-style-image: none;
+}
