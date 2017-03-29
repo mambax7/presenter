@@ -25,6 +25,6 @@ $currentFile = basename(__FILE__);
 $aboutAdmin = new ModuleAdmin();
 
 echo $aboutAdmin->addNavigation($currentFile);
-echo $aboutAdmin->renderAbout('6KJ7RW5DR3VTJ', false);
+echo $aboutAdmin->renderAbout('xoopsfoundation@gmail.com', false);
 
 include_once __DIR__ . '/admin_footer.php';
