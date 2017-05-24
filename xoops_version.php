@@ -99,7 +99,7 @@ $modversion['blocks'][] = array(
 
 // Config
 xoops_load('xoopseditorhandler');
-$editor_handler         =& XoopsEditorHandler::getInstance();
+$editor_handler         = XoopsEditorHandler::getInstance();
 $modversion['config'][] = array(
     'name'        => "presenter_editor",
     'title'       => "_MI_PRESENTER_EDITOR",

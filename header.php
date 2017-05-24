@@ -23,7 +23,7 @@ $dirname  = $GLOBALS['xoopsModule']->getVar('dirname');
 $pathname = XOOPS_ROOT_PATH . '/modules/' . $dirname;
 include_once $pathname . '/include/common.php';
 include_once $pathname . '/include/functions.php';
-$myts  =& MyTextSanitizer::getInstance();
+$myts  = MyTextSanitizer::getInstance();
 $style = PRESENTER_URL . '/assets/css/style.css';
 if (file_exists($style)) {
     return true;

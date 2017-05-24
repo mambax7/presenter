@@ -67,7 +67,7 @@ function presenter_CleanVars(&$global, $key, $default = '', $type = 'int')
 function presenter_meta_keywords($content)
 {
     global $xoopsTpl, $xoTheme;
-    $myts    =& MyTextSanitizer::getInstance();
+    $myts    = MyTextSanitizer::getInstance();
     $content = $myts->undoHtmlSpecialChars($myts->displayTarea($content));
     if (isset($xoTheme) && is_object($xoTheme)) {
         $xoTheme->addMeta('meta', 'keywords', strip_tags($content));
@@ -82,7 +82,7 @@ function presenter_meta_keywords($content)
 function presenter_meta_description($content)
 {
     global $xoopsTpl, $xoTheme;
-    $myts    =& MyTextSanitizer::getInstance();
+    $myts    = MyTextSanitizer::getInstance();
     $content = $myts->undoHtmlSpecialChars($myts->displayTarea($content));
     if (isset($xoTheme) && is_object($xoTheme)) {
         $xoTheme->addMeta('meta', 'description', strip_tags($content));

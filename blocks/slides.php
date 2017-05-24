@@ -26,7 +26,7 @@ include_once XOOPS_ROOT_PATH . '/modules/presenter/include/functions.php';
 function b_presenter_slides_show($options)
 {
     include_once XOOPS_ROOT_PATH . '/modules/presenter/class/slides.php';
-    $myts =& MyTextSanitizer::getInstance();
+    $myts = MyTextSanitizer::getInstance();
 
     $slides       = array();
     $type_block   = $options[0];
