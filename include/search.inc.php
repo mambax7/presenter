@@ -16,7 +16,6 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 search.inc.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  * @param $queryarray
  * @param $andor
  * @param $limit
@@ -28,10 +27,10 @@ function presenter_search($queryarray, $andor, $limit, $offset, $userid)
 {
     global $xoopsDB;
 
-    $sql = "SELECT slides_id, slides_cid FROM " . $xoopsDB->prefix('slides') . " WHERE slides_online = 1";
+    $sql = 'SELECT slides_id, slides_cid FROM ' . $xoopsDB->prefix('slides') . ' WHERE slides_online = 1';
 
     if ($userid != 0) {
-        $sql .= " AND slides_submitter=" . (int)($userid);
+        $sql .= ' AND slides_submitter=' . (int)$userid;
     }
 
     if (is_array($queryarray) && $count = count($queryarray)) {
@@ -41,10 +40,10 @@ function presenter_search($queryarray, $andor, $limit, $offset, $userid)
             $sql .= " $andor ";
             $sql .= "(slides_cid LIKE '%$queryarray[$i]%' OR slides_uid LIKE '%$queryarray[$i]%' OR slides_title LIKE '%$queryarray[$i]%' OR slides_content LIKE '%$queryarray[$i]%' OR slides_transition_x LIKE '%$queryarray[$i]%' OR slides_transition_y LIKE '%$queryarray[$i]%' OR slides_transition_z LIKE '%$queryarray[$i]%' OR slides_rotation_x LIKE '%$queryarray[$i]%' OR slides_rotation_y LIKE '%$queryarray[$i]%' OR slides_rotation_z LIKE '%$queryarray[$i]%' OR slides_scale_x LIKE '%$queryarray[$i]%' OR slides_scale_y LIKE '%$queryarray[$i]%' OR slides_scale_z LIKE '%$queryarray[$i]%' OR slides_created LIKE '%$queryarray[$i]%' OR slides_published LIKE '%$queryarray[$i]%' OR slides_position LIKE '%$queryarray[$i]%' OR slides_online LIKE '%$queryarray[$i]%' OR slides_type LIKE '%$queryarray[$i]%' OR slides_notes LIKE '%$queryarray[$i]%' OR slides_mp3 LIKE '%$queryarray[$i]%' OR slides_time LIKE '%$queryarray[0]%')";
         }
-        $sql .= ")";
+        $sql .= ')';
     }
 
-    $sql .= " ORDER BY slides_id DESC";
+    $sql    .= ' ORDER BY slides_id DESC';
     $result = $xoopsDB->query($sql, $limit, $offset);
     $ret    = array();
     $i      = 0;

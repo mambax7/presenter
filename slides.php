@@ -16,17 +16,16 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 slides.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
-include_once __DIR__ . '/header.php';
-$xoopsOption['template_main'] = 'presenter_slides.tpl';
-//$xoopsOption['template_main'] = 'presenter_iframe.tpl';
-include_once XOOPS_ROOT_PATH . '/header.php';
+require_once __DIR__ . '/header.php';
+$GLOBALS['xoopsOption']['template_main'] = 'presenter_slides.tpl';
+//$GLOBALS['xoopsOption']['template_main'] = 'presenter_iframe.tpl';
+require_once XOOPS_ROOT_PATH . '/header.php';
 $start = presenter_CleanVars($_REQUEST, 'start', 0);
 // Define Stylesheet
 $xoTheme->addStylesheet($style);
 // Get Handler
-$slidesHandler =& xoops_getModuleHandler('slides', 'presenter');
+$slidesHandler = xoops_getModuleHandler('slides', 'presenter');
 $nb_slides     = $GLOBALS['xoopsModuleConfig']['userpager'];
 
 $criteria     = new CriteriaCompo();
@@ -82,7 +81,7 @@ foreach (array_keys($slides_arr) as $i) {
 
 // Display Navigation
 if ($slides_count > $nb_slides) {
-    include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+    require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
     $nav = new XoopsPageNav($slides_count, $nb_slides, $start, 'start');
     $GLOBALS['xoopsTpl']->assign('pagenav', $nav->renderNav(4));
 }
@@ -101,4 +100,4 @@ $GLOBALS['xoopsTpl']->assign('fbcomments', $GLOBALS['xoopsModuleConfig']['fbcomm
 $GLOBALS['xoopsTpl']->assign('admin', PRESENTER_ADMIN);
 $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
 //
-include_once XOOPS_ROOT_PATH . '/footer.php';
+require_once XOOPS_ROOT_PATH . '/footer.php';

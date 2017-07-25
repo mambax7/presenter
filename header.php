@@ -16,13 +16,12 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 header.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
-require_once dirname(dirname(__DIR__)) . '/mainfile.php';
+require_once __DIR__ . '/../../mainfile.php';
 $dirname  = $GLOBALS['xoopsModule']->getVar('dirname');
 $pathname = XOOPS_ROOT_PATH . '/modules/' . $dirname;
-include_once $pathname . '/include/common.php';
-include_once $pathname . '/include/functions.php';
+require_once $pathname . '/include/common.php';
+require_once $pathname . '/include/functions.php';
 $myts  = MyTextSanitizer::getInstance();
 $style = PRESENTER_URL . '/assets/css/style.css';
 if (file_exists($style)) {

@@ -16,15 +16,17 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 xoops_version.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 // defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
 $moduleDirName = basename(__DIR__);
 
 $modversion = array(
-    'name'                => _MI_PRESENTER_NAME,
+
     'version'             => 1.0,
+    'module_status'       => 'Beta 1',
+    'release_data'        => '2017/07/20',
+    'name'                => _MI_PRESENTER_NAME,
     'description'         => _MI_PRESENTER_DESC,
     'author'              => "Michael Beck (aka Mamba)",
     'author_mail'         => "mambax7@gmail.com",
@@ -35,49 +37,49 @@ $modversion = array(
     'license_url'         => 'www.gnu.org/licenses/gpl-2.0.html/',
     'help'                => 'page=help',
 
-    'release_info'        => "release_info",
-    'release_file'        => XOOPS_URL . "/modules/{$moduleDirName}/docs/release_info file",
-    'manual'              => 'link to manual file',
+    'release_info' => 'release_info',
+    'release_file' => XOOPS_URL . "/modules/{$moduleDirName}/docs/release_info file",
+    'release_date' => '2013/08/28',
+
+    'manual'              => 'Installation.txt',
     'manual_file'         => XOOPS_URL . "/modules/$moduleDirName/docs/install.txt",
     'min_php'             => '5.5',
-    'min_xoops'           => '2.5.7.2',
+    'min_xoops'           => '2.5.9',
     'min_admin'           => '1.1',
-    'min_db'              => array('mysql' => '5.0.7', 'mysqli' => '5.0.7'),
-    'image'               => "assets/images/module_logo.png",
+    'min_db'              => array('mysql' => '5.5'),
+    'image'               => "assets/images/logoModule.png",
     'dirname'             => $moduleDirName,
-    //Frameworks
-    'dirmoduleadmin'      => 'Frameworks/moduleclasses/moduleadmin',
-    'sysicons16'          => 'Frameworks/moduleclasses/icons/16',
-    'sysicons32'          => 'Frameworks/moduleclasses/icons/32',
     // Local path icons
     'modicons16'          => 'assets/images/icons/16',
     'modicons32'          => 'assets/images/icons/32',
+
     //About
-    'demo_site_url'       => "https://xoops.org",
-    'demo_site_name'      => "XOOPS Demo Site",
-    'support_url'         => "https://xoops.org/modules/newbb",
-    'support_name'        => "Support Forum",
-    'module_website_url'  => "www.xoops.org",
-    'module_website_name' => "XOOPS Project",
-    'release_date'        => '2015/04/03', //yyyy/mm/dd
-    'module_status'       => "Beta 1",
+    'demo_site_url'       => 'https://xoops.org',
+    'demo_site_name'      => 'XOOPS Demo Site',
+    'support_url'         => 'https://xoops.org/modules/newbb',
+    'support_name'        => 'Support Forum',
+    'module_website_url'  => 'www.xoops.org',
+    'module_website_name' => 'XOOPS Project',
+    'release'             => '2013/08/28',
+
     // Admin system menu
     'system_menu'         => 1,
     // Admin things
     'hasAdmin'            => 1,
-    'adminindex'          => "admin/index.php",
-    'adminmenu'           => "admin/menu.php",
+    'adminindex'          => 'admin/index.php',
+    'adminmenu'           => 'admin/menu.php',
     // Menu
     'hasMain'             => 1,
     // Scripts to run upon installation or update
-    'onInstall'           => "include/oninstall.php",//    'onUpdate'            => "include/onupdate.php"
+    'onInstall'           => 'include/oninstall.php',
+    'onUpdate'            => 'include/onupdate.php'
 );
 
 // Mysql file
-$modversion['sqlfile']['mysql'] = "sql/mysql.sql";
+$modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
 // Tables
-$modversion['tables'][1] = "presenter_categories";
-$modversion['tables'][2] = "presenter_slides";
+$modversion['tables'][1] = 'presenter_categories';
+$modversion['tables'][2] = 'presenter_slides';
 // Templates
 $modversion['templates'][] = array('file' => 'presenter_header.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'presenter_index.tpl', 'description' => '');
@@ -89,95 +91,107 @@ $modversion['templates'][] = array('file' => 'presenter_iframeslides.tpl', 'desc
 
 //Blocks
 $modversion['blocks'][] = array(
-    'file'        => "slides.php",
+    'file'        => 'slides.php',
     'name'        => _MI_PRESENTER_SLIDES_BLOCK,
-    'description' => "",
-    'show_func'   => "b_presenter_slides_show",
-    'edit_func'   => "b_presenter_slides_edit",
-    'options'     => "slides|5|25|0",
-    'template'    => "slides_block.tpl");
+    'description' => '',
+    'show_func'   => 'b_presenter_slides_show',
+    'edit_func'   => 'b_presenter_slides_edit',
+    'options'     => 'slides|5|25|0',
+    'template'    => 'slides_block.tpl'
+);
 
 // Config
 xoops_load('xoopseditorhandler');
-$editor_handler         = XoopsEditorHandler::getInstance();
+$editorHandler          = XoopsEditorHandler::getInstance();
 $modversion['config'][] = array(
-    'name'        => "presenter_editor",
-    'title'       => "_MI_PRESENTER_EDITOR",
-    'description' => "_MI_PRESENTER_EDITOR_DESC",
-    'formtype'    => "select",
-    'valuetype'   => "text",
-    'options'     => array_flip($editor_handler->getList()),
-    'default'     => "dhtml");
+    'name'        => 'presenter_editor',
+    'title'       => '_MI_PRESENTER_EDITOR',
+    'description' => '_MI_PRESENTER_EDITOR_DESC',
+    'formtype'    => 'select',
+    'valuetype'   => 'text',
+    'options'     => array_flip($editorHandler->getList()),
+    'default'     => 'dhtml'
+);
 
 $modversion['config'][] = array(
-    'name'        => "keywords",
-    'title'       => "_MI_PRESENTER_KEYWORDS",
-    'description' => "_MI_PRESENTER_KEYWORDS_DESC",
-    'formtype'    => "textbox",
-    'valuetype'   => "text",
-    'default'     => "presenter, slides");
+    'name'        => 'keywords',
+    'title'       => '_MI_PRESENTER_KEYWORDS',
+    'description' => '_MI_PRESENTER_KEYWORDS_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'text',
+    'default'     => 'presenter, slides'
+);
 
 //Uploads : filesize of slides_mp3
 $modversion['config'][] = array(
-    'name'        => "filesize",
-    'title'       => "_MI_PRESENTER_SIZE",
-    'description' => "_MI_PRESENTER_SIZE_DESC",
-    'formtype'    => "textbox",
-    'valuetype'   => "int",
-    'default'     => 10485760);
+    'name'        => 'filesize',
+    'title'       => '_MI_PRESENTER_SIZE',
+    'description' => '_MI_PRESENTER_SIZE_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'int',
+    'default'     => 10485760
+);
 
 //Uploads : filemimetypes of slides_mp3
 $modversion['config'][] = array(
-    'name'        => "filemimetypes",
-    'title'       => "_MI_PRESENTER_MIMETYPES",
-    'description' => "_MI_PRESENTER_MIMETYPES_DESC",
-    'formtype'    => "select_multi",
-    'valuetype'   => "array",
-    'default'     => array("image/gif", "image/jpeg", "image/png"),
+    'name'        => 'filemimetypes',
+    'title'       => '_MI_PRESENTER_MIMETYPES',
+    'description' => '_MI_PRESENTER_MIMETYPES_DESC',
+    'formtype'    => 'select_multi',
+    'valuetype'   => 'array',
+    'default'     => array('image/gif', 'image/jpeg', 'image/png'),
     'options'     => array(
-        "bmp"   => "image/bmp",
-        "gif"   => "image/gif",
-        "pjpeg" => "image/pjpeg",
-        "jpeg"  => "image/jpeg",
-        "jpg"   => "image/jpg",
-        "jpe"   => "image/jpe",
-        "png"   => "image/png"));
-$modversion['config'][] = array(
-    'name'        => "adminpager",
-    'title'       => "_MI_PRESENTER_ADMINPAGER",
-    'description' => "_MI_PRESENTER_ADMINPAGER_DESC",
-    'formtype'    => "textbox",
-    'valuetype'   => "int",
-    'default'     => 10);
+        'bmp'   => 'image/bmp',
+        'gif'   => 'image/gif',
+        'pjpeg' => 'image/pjpeg',
+        'jpeg'  => 'image/jpeg',
+        'jpg'   => 'image/jpg',
+        'jpe'   => 'image/jpe',
+        'png'   => 'image/png'
+    )
+);
 
 $modversion['config'][] = array(
-    'name'        => "userpager",
-    'title'       => "_MI_PRESENTER_USERPAGER",
-    'description' => "_MI_PRESENTER_USERPAGER_DESC",
-    'formtype'    => "textbox",
-    'valuetype'   => "int",
-    'default'     => 10);
+    'name'        => 'adminpager',
+    'title'       => '_MI_PRESENTER_ADMINPAGER',
+    'description' => '_MI_PRESENTER_ADMINPAGER_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'int',
+    'default'     => 10
+);
 
 $modversion['config'][] = array(
-    'name'        => "advertise",
-    'title'       => "_MI_PRESENTER_ADVERTISE",
-    'description' => "_MI_PRESENTER_ADVERTISE_DESC",
-    'formtype'    => "textarea",
-    'valuetype'   => "text",
-    'default'     => "");
+    'name'        => 'userpager',
+    'title'       => '_MI_PRESENTER_USERPAGER',
+    'description' => '_MI_PRESENTER_USERPAGER_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'int',
+    'default'     => 10
+);
 
 $modversion['config'][] = array(
-    'name'        => "bookmarks",
-    'title'       => "_MI_PRESENTER_BOOKMARKS",
-    'description' => "_MI_PRESENTER_BOOKMARKS_DESC",
-    'formtype'    => "yesno",
-    'valuetype'   => "int",
-    'default'     => 0);
+    'name'        => 'advertise',
+    'title'       => '_MI_PRESENTER_ADVERTISE',
+    'description' => '_MI_PRESENTER_ADVERTISE_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => ''
+);
 
 $modversion['config'][] = array(
-    'name'        => "fbcomments",
-    'title'       => "_MI_PRESENTER_FBCOMMENTS",
-    'description' => "_MI_PRESENTER_FBCOMMENTS_DESC",
-    'formtype'    => "yesno",
-    'valuetype'   => "int",
-    'default'     => 0);
+    'name'        => 'bookmarks',
+    'title'       => '_MI_PRESENTER_BOOKMARKS',
+    'description' => '_MI_PRESENTER_BOOKMARKS_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 0
+);
+
+$modversion['config'][] = array(
+    'name'        => 'fbcomments',
+    'title'       => '_MI_PRESENTER_FBCOMMENTS',
+    'description' => '_MI_PRESENTER_FBCOMMENTS_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 0
+);

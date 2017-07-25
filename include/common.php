@@ -16,15 +16,12 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 common.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 
-if (!defined("XOOPS_ROOT_PATH")) {
-    exit;
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 //$thisPath = dirname(__DIR__);
-//include_once $thisPath.'/admin/header.php';
+//require_once $thisPath.'/admin/header.php';
 global $pathIcon32;
 
 if (!defined('PRESENTER_MODULE_PATH')) {
@@ -46,4 +43,4 @@ if (!defined('PRESENTER_MODULE_PATH')) {
 }
 // module information
 $copyright = "<a href='https://xoops.org' title='XOOPS Project' target='_blank'>
-                     <img src='" . PRESENTER_AUTHOR_LOGOIMG . "' alt='XOOPS Project' /></a>";
+                     <img src='" . PRESENTER_AUTHOR_LOGOIMG . "' alt='XOOPS Project'></a>";

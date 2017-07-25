@@ -16,7 +16,6 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 categories.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
 // defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
@@ -58,14 +57,14 @@ class PresenterCategories extends XoopsObject
 
         $title = $this->isNew() ? sprintf(_AM_PRESENTER_CAT_ADD) : sprintf(_AM_PRESENTER_CAT_EDIT);
 
-        include_once(XOOPS_ROOT_PATH . '/class/xoopsformloader.php');
+        require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
 
         // Cat_pid
-        include_once(XOOPS_ROOT_PATH . '/class/tree.php');
-        $categoriesHandler =& xoops_getModuleHandler('categories', 'presenter');
+        require_once XOOPS_ROOT_PATH . '/class/tree.php';
+        $categoriesHandler = xoops_getModuleHandler('categories', 'presenter');
         $criteria          = new CriteriaCompo();
         $categories        = $categoriesHandler->getObjects($criteria);
         if ($categories) {
@@ -81,7 +80,7 @@ class PresenterCategories extends XoopsObject
         $cat_image = $this->getVar('cat_image') ? $this->getVar('cat_image') : 'blank.gif';
 
         $uploadir    = '/uploads/presenter/images/categories';
-        $imgtray     = new XoopsFormElementTray(_AM_PRESENTER_CAT_IMAGE, '<br />');
+        $imgtray     = new XoopsFormElementTray(_AM_PRESENTER_CAT_IMAGE, '<br>');
         $imgpath     = sprintf(_AM_PRESENTER_FORMIMAGE_PATH, $uploadir);
         $imageselect = new XoopsFormSelect($imgpath, 'cat_image', $cat_image);
         $image_array = XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . $uploadir);
@@ -90,8 +89,8 @@ class PresenterCategories extends XoopsObject
         }
         $imageselect->setExtra("onchange='showImgSelected(\"image_cat_image\", \"cat_image\", \"" . $uploadir . "\", \"\", \"" . XOOPS_URL . "\")'");
         $imgtray->addElement($imageselect);
-        $imgtray->addElement(new XoopsFormLabel('', "<br /><img src='" . XOOPS_URL . "/" . $uploadir . "/" . $cat_image . "' name='image_cat_image' id='image_cat_image' alt='' />"));
-        $fileseltray = new XoopsFormElementTray('', '<br />');
+        $imgtray->addElement(new XoopsFormLabel('', "<br><img src='" . XOOPS_URL . '/' . $uploadir . '/' . $cat_image . "' name='image_cat_image' id='image_cat_image' alt=''>"));
+        $fileseltray = new XoopsFormElementTray('', '<br>');
         $fileseltray->addElement(new XoopsFormFile(_AM_PRESENTER_FORMUPLOAD, 'cat_image', $xoopsModuleConfig['maxsize']));
         $fileseltray->addElement(new XoopsFormLabel(''));
         $imgtray->addElement($fileseltray);

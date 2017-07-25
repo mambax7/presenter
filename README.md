@@ -1,6 +1,8 @@
 ![alt XOOPS CMS](https://xoops.org/images/logoXoops4GithubRepository.png)
 ## Presenter module for [XOOPS CMS 2.5.7+](https://xoops.org)
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](LICENSE) 
+
+
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/mambax7/presenter.svg?style=flat)](https://scrutinizer-ci.com/g/mambax7/presenter/?branch=master)
 [![Latest Pre-Resease](https://img.shields.io/github/tag/XoopsModules25x/presenter.svg?style=flat)](https://github.com/XoopsModules25x/presenter/tags/)
 [![Latest Version](https://img.shields.io/github/release/XoopsModules25x/presenter.svg?style=flat)](https://github.com/XoopsModules25x/presenter/releases/)

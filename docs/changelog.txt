@@ -1,5 +1,10 @@
 
 ====================================
- 1.0 Alpha 1            (NOT RELEASED)
+ 1.1 Alpha 1            (NOT RELEASED)
 ====================================
  - First public Alpha 1     (mamba)
+
+====================================
+ 2013/08/28 4:00:27 Version 1.0
+====================================
+ - Original release presenter (XOOPS Development Team)

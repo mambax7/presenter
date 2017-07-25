@@ -1,18 +1,19 @@
 <head>
 
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=1024"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="description"
-      content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com."/>
-<meta name="author" content="Bartek Szopka"/>
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1024">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description"
+          content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com.">
+    <meta name="author" content="Bartek Szopka">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic"
+          rel="stylesheet">
 
 
-<link href="assets/css/impress-demo.css" rel="stylesheet"/>
+    <link href="assets/css/impress-demo.css" rel="stylesheet">
 
-<link rel="shortcut icon" href="favicon.png"/>
-<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 </head>
 
@@ -22,7 +23,8 @@
     For example this fallback message is only visible when there is `impress-not-supported` class on body.
 -->
 <div class="fallback-message">
-    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+        version of this presentation.</p>
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 </div>
 
@@ -70,27 +72,24 @@
 <div id="impress">
 
     <{foreach item=slides from=$slides}>
+        <div
+                <{if $slides.css_id eq ''}> <{else}> id="<{$slides.css_id}>" <{/if}>
+                <{if $slides.css_class eq ''}> <{else}> class="<{$slides.css_class}>" <{/if}>
 
 
-    <div
-    <{if $slides.css_id eq ''}> <{else}> id="<{$slides.css_id}>" <{/if}>
-    <{if $slides.css_class eq ''}> <{else}> class="<{$slides.css_class}>" <{/if}>
+                <{if $slides.slides_transition_x eq ''}> <{else}> data-x="<{$slides.slides_transition_x}>" <{/if}>
+                <{if $slides.slides_transition_y eq ''}> <{else}> data-y="<{$slides.slides_transition_y}>" <{/if}>
+                <{if $slides.slides_transition_z eq ''}> <{else}> data-z="<{$slides.slides_transition_z}>" <{/if}>
+                <{if $slides.slides_rotation_x eq ''}> <{else}> data-rotate-x="<{$slides.slides_rotation_x}>" <{/if}>
+                <{if $slides.slides_rotation_y eq ''}> <{else}> data-rotate-y="<{$slides.slides_rotation_y}>" <{/if}>
+                <{if $slides.slides_rotation_z eq ''}> <{else}> data-rotate-z="<{$slides.slides_rotation_z}>" <{/if}>
+                <{if $slides.slides_scale_x eq ''}> <{else}> data-scale="<{$slides.slides_scale_x}>" <{/if}>
+                <{if $slides.slides_scale_y eq ''}> <{else}> data-scale-y="<{$slides.slides_scale_y}>" <{/if}>
+                <{if $slides.slides_scale_z eq ''}> <{else}> data-scale-z="<{$slides.slides_scale_z}>"> <{/if}>
 
+            <{$slides.slides_content}>
 
-    <{if $slides.slides_transition_x eq ''}> <{else}> data-x="<{$slides.slides_transition_x}>" <{/if}>
-    <{if $slides.slides_transition_y eq ''}> <{else}> data-y="<{$slides.slides_transition_y}>" <{/if}>
-    <{if $slides.slides_transition_z eq ''}> <{else}> data-z="<{$slides.slides_transition_z}>" <{/if}>
-    <{if $slides.slides_rotation_x eq ''}> <{else}> data-rotate-x="<{$slides.slides_rotation_x}>" <{/if}>
-    <{if $slides.slides_rotation_y eq ''}> <{else}> data-rotate-y="<{$slides.slides_rotation_y}>" <{/if}>
-    <{if $slides.slides_rotation_z eq ''}> <{else}> data-rotate-z="<{$slides.slides_rotation_z}>" <{/if}>
-    <{if $slides.slides_scale_x eq ''}> <{else}> data-scale="<{$slides.slides_scale_x}>" <{/if}>
-    <{if $slides.slides_scale_y eq ''}> <{else}> data-scale-y="<{$slides.slides_scale_y}>" <{/if}>
-    <{if $slides.slides_scale_z eq ''}> <{else}> data-scale-z="<{$slides.slides_scale_z}>"> <{/if}>
-
-    <{$slides.slides_content}>
-
-    </div>
-
+        </div>
     <{/foreach}>
 
 </div>

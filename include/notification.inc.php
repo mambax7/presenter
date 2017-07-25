@@ -16,21 +16,21 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 notification.inc.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  * @param $category
  * @param $item_id
- * @return string
+ * @return mixed
  */
 // comment callback functions
 function presenter_notify_iteminfo($category, $item_id)
 {
     global $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
 
-    if (empty($xoopsModule) || $xoopsModule->getVar('dirname') !== 'presenter') {
-        $module_handler =& xoops_gethandler('module');
-        $module         =& $module_handler->getByDirname('presenter');
-        $config_handler =& xoops_gethandler('config');
-        $config         =& $config_handler->getConfigsByCat(0, $module->getVar('mid'));
+    if (empty($xoopsModule) || $xoopsModule->getVar('dirname') != 'presenter') {
+        /** @var XoopsModuleHandler $moduleHandler */
+        $moduleHandler = xoops_getHandler('module');
+        $module        = $moduleHandler->getByDirname('presenter');
+        $configHandler = xoops_getHandler('config');
+        $config        = $configHandler->getConfigsByCat(0, $module->getVar('mid'));
     } else {
         $module =& $xoopsModule;
         $config =& $xoopsModuleConfig;

@@ -16,38 +16,37 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 admin_header.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
-$moduleDirName = basename(dirname(__DIR__));
-include_once dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
-include_once $GLOBALS['xoops']->path('www/include/cp_functions.php');
-include_once $GLOBALS['xoops']->path('www/include/cp_header.php');
-include_once $GLOBALS['xoops']->path('www/class/xoopsformloader.php');
+require_once __DIR__ . '/../../../include/cp_header.php';
+$thisPath = dirname(__DIR__);
+require_once $thisPath . '/include/common.php';
+require_once $thisPath . '/include/functions.php';
 
-xoops_load('XoopsRequest');
+$thisModule = $GLOBALS['xoopsModule']->getVar('dirname');
 
-$pathIcon16      = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons16'));
-$pathIcon32      = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons32'));
-$xoopsModuleAdminPath = $GLOBALS['xoops']->path('www/' . $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin'));
-require_once "{$xoopsModuleAdminPath}/moduleadmin.php";
-
+$pathIcon16      = \Xmf\Module\Admin::iconUrl('', 16);
+$pathIcon16      = \Xmf\Module\Admin::iconUrl('', 32);
+$pathModuleAdmin = $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin');
+//load handlers
+$categoriesHandler = xoops_getModuleHandler('categories', $thisModule);
+$slidesHandler     = xoops_getModuleHandler('slides', $thisModule);
 $myts = MyTextSanitizer::getInstance();
-if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
-    include_once $GLOBALS['xoops']->path('class/template.php');
+if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
+    require_once XOOPS_ROOT_PATH . '/class/template.php';
     $xoopsTpl = new XoopsTpl();
 }
 
-//Module specific elements
-include_once $GLOBALS['xoops']->path("modules/{$moduleDirName}/include/functions.php");
-include_once $GLOBALS['xoops']->path("modules/{$moduleDirName}/include/common.php");
+$xoopsTpl->assign('pathIcon16', $pathIcon16);
+$xoopsTpl->assign('pathIcon32', $pathIcon32);
+//Load languages
+xoops_loadLanguage('admin', $thisModule);
+xoops_loadLanguage('modinfo', $thisModule);
+xoops_loadLanguage('main', $thisModule);
+// Local admin menu class
+require_once $GLOBALS['xoops']->path($pathModuleAdmin . '/moduleadmin.php');
 
-// Load language files
-xoops_loadLanguage('admin', $moduleDirName);
-xoops_loadLanguage('modinfo', $moduleDirName);
-xoops_loadLanguage('main', $moduleDirName);
-
-$adminMenu = new ModuleAdmin();
-
+xoops_cp_header();
+//$adminObject = \Xmf\Module\Admin::getInstance();
 //load handlers
 $categoriesHandler =& xoops_getModuleHandler('categories', $moduleDirName);
 $slidesHandler     =& xoops_getModuleHandler('slides', $moduleDirName);

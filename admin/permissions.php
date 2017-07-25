@@ -16,14 +16,13 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 permissions.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
 include __DIR__ . '/admin_header.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 if (!empty($_POST['submit'])) {
     redirect_header(XOOPS_URL . '/modules/' . $xoopsModule->dirname() . '/admin/permissions.php', 1, _MP_GPERMUPDATED);
 }
-echo $adminMenu->addNavigation('permissions.php');
+$adminObject->displayNavigation(basename(__FILE__));
 
 $permission                = presenter_CleanVars($_POST, 'permission', 1, 'int');
 $selected                  = array('', '', '');
@@ -35,14 +34,14 @@ echo "
         <tr>
             <td>
                 <select name='permission' onChange='document.fselperm.submit()'>
-                    <option value='1'" . $selected[0] . ">" . _AM_PRESENTER_PERMISSIONS_ACCESS . "</option>
-                    <option value='2'" . $selected[1] . ">" . _AM_PRESENTER_PERMISSIONS_SUBMIT . "</option>
-                    <option value='3'" . $selected[2] . ">" . _AM_PRESENTER_PERMISSIONS_VIEW . "</option>
+                    <option value='1'" . $selected[0] . '>' . _AM_PRESENTER_PERMISSIONS_ACCESS . "</option>
+                    <option value='2'" . $selected[1] . '>' . _AM_PRESENTER_PERMISSIONS_SUBMIT . "</option>
+                    <option value='3'" . $selected[2] . '>' . _AM_PRESENTER_PERMISSIONS_VIEW . '</option>
                 </select>
             </td>
         </tr>
     </table>
-</form>";
+</form>';
 
 $module_id = $xoopsModule->getVar('mid');
 switch ($permission) {
@@ -64,17 +63,17 @@ switch ($permission) {
 }
 
 $permform       = new XoopsGroupPermForm($formTitle, $module_id, $permName, $permDesc, 'admin/permissions.php');
-$slides_Handler =& xoops_getModuleHandler('slides', 'presenter');
+$slidesHandler = xoops_getModuleHandler('slides', 'presenter');
 $criteria       = new CriteriaCompo();
 $criteria->setSort('slides_cid');
 $criteria->setOrder('ASC');
-$slides_arr = $slides_Handler->getObjects($criteria);
+$slides_arr = $slidesHandler->getObjects($criteria);
 
 foreach (array_keys($slides_arr) as $i) {
     $permform->addItem($slides_arr[$i]->getVar('slides_id'), $slides_arr[$i]->getVar('slides_cid'));
 }
 echo $permform->render();
-echo "<br /><br />";
+echo '<br><br>';
 unset($permform);
 
 include __DIR__ . '/admin_footer.php';

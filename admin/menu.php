@@ -16,20 +16,20 @@
  * @package         presenter
  * @since           2.5.5
  * @author          Michael Beck (aka Mamba) - <https://xoops.org>
- * @version         $Id: 1.0 menu.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 
 $moduleDirName = basename(dirname(__DIR__));
-$moduleHandler =& xoops_gethandler('module');
-$module        =& $moduleHandler->getByDirname($moduleDirName);
-$pathIcon32    = '../../' . $module->getInfo('sysicons32');
-xoops_loadLanguage('modinfo', $module->dirname());
 
-$xoopsModuleAdminPath = XOOPS_ROOT_PATH . '/' . $module->getInfo('dirmoduleadmin');
-if (!file_exists($fileinc = $xoopsModuleAdminPath . '/language/' . $GLOBALS['xoopsConfig']['language'] . '/' . 'main.php')) {
-    $fileinc = $xoopsModuleAdminPath . '/language/english/main.php';
+if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
+} else {
+    $moduleHelper = Xmf\Module\Helper::getHelper('system');
 }
-include_once $fileinc;
+$adminObject = \Xmf\Module\Admin::getInstance();
+
+$pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
+//$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
+
+$moduleHelper->loadLanguage('modinfo');
 
 $adminmenu[] = array(
     'title' => _AM_MODULEADMIN_HOME,

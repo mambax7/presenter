@@ -16,11 +16,10 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 index.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
-include_once __DIR__ . '/header.php';
-$xoopsOption['template_main'] = 'presenter_index.tpl';
-include_once XOOPS_ROOT_PATH . "/header.php";
+require_once __DIR__ . '/header.php';
+$GLOBALS['xoopsOption']['template_main'] = 'presenter_index.tpl';
+require_once XOOPS_ROOT_PATH . '/header.php';
 // Define Stylesheet
 $xoTheme->addStylesheet($style);
 // keywords
@@ -28,7 +27,7 @@ presenter_meta_keywords($GLOBALS['xoopsModuleConfig']['keywords']);
 // description
 presenter_meta_description(_MA_PRESENTER_DESC);
 //
-$GLOBALS['xoopsTpl']->assign('xoops_mpageurl', PRESENTER_URL . "/index.php");
+$GLOBALS['xoopsTpl']->assign('xoops_mpageurl', PRESENTER_URL . '/index.php');
 $GLOBALS['xoopsTpl']->assign('presenter_url', PRESENTER_URL);
 $GLOBALS['xoopsTpl']->assign('adv', $GLOBALS['xoopsModuleConfig']['advertise']);
 //
@@ -38,4 +37,4 @@ $GLOBALS['xoopsTpl']->assign('adv', $GLOBALS['xoopsModuleConfig']['advertise']);
 $GLOBALS['xoopsTpl']->assign('admin', PRESENTER_ADMIN);
 $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
 //
-include_once XOOPS_ROOT_PATH . "/footer.php";
+require_once XOOPS_ROOT_PATH . "/footer.php";

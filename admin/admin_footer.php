@@ -19,8 +19,7 @@
  * @version         $Id: 1.0 admin_footer.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 
-global $xoopsModule;
-//$pathIcon32      = '../' . $xoopsModule->getInfo('icons32');
+$pathIcon32      = Xmf\Module\Admin::iconUrl('', 32);
 
 echo "<div class='adminfooter'>\n"
      ."  <div style='text-align: center;'>\n"

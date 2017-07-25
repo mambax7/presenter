@@ -16,15 +16,13 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 about.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
-include_once __DIR__ . '/admin_header.php';
+
+require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
 
-$currentFile = basename(__FILE__);
-$aboutAdmin = new ModuleAdmin();
+$adminObject->displayNavigation(basename(__FILE__));
+$adminObject->setPaypal('xoopsfoundation@gmail.com');
+$adminObject->displayAbout(false);
 
-echo $aboutAdmin->addNavigation($currentFile);
-echo $aboutAdmin->renderAbout('xoopsfoundation@gmail.com', false);
-
-include_once __DIR__ . '/admin_footer.php';
+require_once __DIR__ . '/admin_footer.php';

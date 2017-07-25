@@ -16,16 +16,15 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 categories.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
-include_once __DIR__ . '/header.php';
-$xoopsOption['template_main'] = 'presenter_categories.tpl';
-include_once XOOPS_ROOT_PATH . '/header.php';
+require_once __DIR__ . '/header.php';
+$GLOBALS['xoopsOption']['template_main'] = 'presenter_categories.tpl';
+require_once XOOPS_ROOT_PATH . '/header.php';
 $start = presenter_CleanVars($_REQUEST, 'start', 0);
 // Define Stylesheet
 $xoTheme->addStylesheet($style);
 // Get Handler
-$categoriesHandler =& xoops_getModuleHandler('categories', 'presenter');
+$categoriesHandler = xoops_getModuleHandler('categories', 'presenter');
 $nb_categories     = $GLOBALS['xoopsModuleConfig']['userpager'];
 
 $criteria         = new CriteriaCompo();
@@ -46,7 +45,7 @@ if ($categories_count > 0) {
     }
     // Display Navigation
     if ($categories_count > $nb_categories) {
-        include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+        require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
         $nav = new XoopsPageNav($categories_count, $nb_categories, $start, 'start');
         $GLOBALS['xoopsTpl']->assign('pagenav', $nav->renderNav(4));
     }
@@ -66,4 +65,4 @@ $GLOBALS['xoopsTpl']->assign('adv', $GLOBALS['xoopsModuleConfig']['advertise']);
 $GLOBALS['xoopsTpl']->assign('admin', PRESENTER_ADMIN);
 $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
 //
-include_once XOOPS_ROOT_PATH . '/footer.php';
+require_once XOOPS_ROOT_PATH . '/footer.php';

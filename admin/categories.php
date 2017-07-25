@@ -16,19 +16,19 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 categories.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
-include_once __DIR__ . '/admin_header.php';
+
+require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
 //It recovered the value of argument op in URL$
 $op = presenter_CleanVars($_REQUEST, 'op', 'list', 'string');
-echo $adminMenu->addNavigation('categories.php');
+$adminObject->displayNavigation(basename(__FILE__));
 
 switch ($op) {
     case 'list':
     default:
-        $adminMenu->addItemButton(_AM_PRESENTER_ADD_CATEGORIES, 'categories.php?op=new', 'add');
-        echo $adminMenu->renderButton();
+        $adminObject->addItemButton(_AM_PRESENTER_ADD_CATEGORIES, 'categories.php?op=new', 'add');
+        $adminObject->displayButton('left');
         $criteria = new CriteriaCompo();
         $criteria->setSort('cat_id ASC, cat_id');
         $criteria->setOrder('ASC');
@@ -44,32 +44,32 @@ switch ($op) {
                         <th class='center'>" . _AM_PRESENTER_CAT_IMAGE . "</th>
                         <th class='center'>" . _AM_PRESENTER_CAT_WEIGHT . "</th>
                         <th class='center'>" . _AM_PRESENTER_CAT_COLOR . "</th>
-                        <th class='center width5'>" . _AM_PRESENTER_FORMACTION . "</th>
-                    </tr>";
+                        <th class='center width5'>" . _AM_PRESENTER_FORMACTION . '</th>
+                    </tr>';
 
-            $class = "odd";
+            $class = 'odd';
 
             foreach (array_keys($categories_arr) as $i) {
                 echo "<tr class='" . $class . "'>";
-                $class = ($class === "even") ? "odd" : "even";
-                echo "<td class='left'><img src='" . PRESENTER_URL . "/assets/images/icons/16/arrow.gif'>&nbsp;" . $categories_arr[$i]->getVar('cat_title') . "</td>";
-                echo "<td class='center'>" . strip_tags($categories_arr[$i]->getVar('cat_desc')) . "</td>";
+                $class = ($class === 'even') ? 'odd' : 'even';
+                echo "<td class='left'><img src='" . PRESENTER_URL . "/assets/images/icons/16/arrow.gif'>&nbsp;" . $categories_arr[$i]->getVar('cat_title') . '</td>';
+                echo "<td class='center'>" . strip_tags($categories_arr[$i]->getVar('cat_desc')) . '</td>';
                 $cat_image = $categories_arr[$i]->getVar('cat_image');
-                if (file_exists($image = XOOPS_UPLOAD_URL . "/presenter/images/categories/" . $cat_image)) {
+                if (file_exists($image = XOOPS_UPLOAD_URL . '/presenter/images/categories/' . $cat_image)) {
                     echo "<td class='center'><img src='" . $image . "' height='30px' alt='cat_image'></td>";
                 } else {
                     echo "<td class='center'><img src='../images/categories/" . $cat_image . "' height='30px' alt='cat_image'></td>";
                 }
-                echo "<td class='center'>" . strip_tags($categories_arr[$i]->getVar('cat_weight')) . "</td>";
-                echo "<td class='center'><span style='background-color:" . $categories_arr[$i]->getVar('cat_color') . "'>&nbsp;&nbsp;&nbsp;</span> -> " . $categories_arr[$i]->getVar('cat_color') . "</td>";
+                echo "<td class='center'>" . strip_tags($categories_arr[$i]->getVar('cat_weight')) . '</td>';
+                echo "<td class='center'><span style='background-color:" . $categories_arr[$i]->getVar('cat_color') . "'>&nbsp;&nbsp;&nbsp;</span> -> " . $categories_arr[$i]->getVar('cat_color') . '</td>';
 
                 echo "<td class='center width5'>
                     <a href='categories.php?op=edit&cat_id=" . $i . "'><img src=" . $pathIcon16 . "/edit.png alt='" . _EDIT . "' title='" . _EDIT . "'></a>
                     <a href='categories.php?op=delete&cat_id=" . $i . "'><img src=" . $pathIcon16 . "/delete.png alt='" . _DELETE . "' title='" . _DELETE . "'></a>
                     </td>";
-                echo "</tr>";
+                echo '</tr>';
             }
-            echo "</table><br /><br />";
+            echo '</table><br><br>';
         } else {
             echo "<table width='100%' cellspacing='1' class='outer'>
                     <tr>
@@ -80,16 +80,16 @@ switch ($op) {
 //                      <th class='center'>" . _AM_PRESENTER_CAT_COLOR . "</th>
                         <th class='center width5'>" . _AM_PRESENTER_FORMACTION . "</th>
                     </tr><tr><td class='errorMsg' colspan='7'>There are no cat</td></tr>";
-            echo "</table><br /><br />";
+            echo '</table><br><br>';
         }
 
         break;
 
     case 'new':
-        $adminMenu->addItemButton(_AM_PRESENTER_CATEGORIES_LIST, 'categories.php', 'list');
-        echo $adminMenu->renderButton();
+        $adminObject->addItemButton(_AM_PRESENTER_CATEGORIES_LIST, 'categories.php', 'list');
+        $adminObject->displayButton('left');
 
-        $obj  =& $categoriesHandler->create();
+        $obj  = $categoriesHandler->create();
         $form = $obj->getForm();
         $form->display();
         break;
@@ -99,9 +99,9 @@ switch ($op) {
             redirect_header('categories.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
         }
         if (isset($_REQUEST['cat_id'])) {
-            $obj =& $categoriesHandler->get($_REQUEST['cat_id']);
+            $obj = $categoriesHandler->get($_REQUEST['cat_id']);
         } else {
-            $obj =& $categoriesHandler->create();
+            $obj = $categoriesHandler->create();
         }
 
         // Form save fields
@@ -109,7 +109,7 @@ switch ($op) {
         $obj->setVar('cat_title', $_REQUEST['cat_title']);
         $obj->setVar('cat_desc', $_REQUEST['cat_desc']);
 
-        include_once XOOPS_ROOT_PATH . '/class/uploader.php';
+        require_once XOOPS_ROOT_PATH . '/class/uploader.php';
         $uploaddir = XOOPS_UPLOAD_PATH . '/presenter/images/categories/';
         $uploader  = new XoopsMediaUploader($uploaddir, $GLOBALS['xoopsModuleConfig']['mimetypes'], $GLOBALS['xoopsModuleConfig']['maxsize'], null, null);
         if ($uploader->fetchMedia($_POST['xoops_upload_file'][0])) {
@@ -138,16 +138,16 @@ switch ($op) {
         break;
 
     case 'edit':
-        $adminMenu->addItemButton(_AM_PRESENTER_ADD_CATEGORIES, 'categories.php?op=new', 'add');
-        $adminMenu->addItemButton(_AM_PRESENTER_CATEGORIES_LIST, 'categories.php', 'list');
-        echo $adminMenu->renderButton();
+        $adminObject->addItemButton(_AM_PRESENTER_ADD_CATEGORIES, 'categories.php?op=new', 'add');
+        $adminObject->addItemButton(_AM_PRESENTER_CATEGORIES_LIST, 'categories.php', 'list');
+        $adminObject->displayButton('left');
         $obj  = $categoriesHandler->get($_REQUEST['cat_id']);
         $form = $obj->getForm();
         $form->display();
         break;
 
     case 'delete':
-        $obj =& $categoriesHandler->get($_REQUEST['cat_id']);
+        $obj = $categoriesHandler->get($_REQUEST['cat_id']);
         if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 redirect_header('categories.php', 3, implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -162,4 +162,4 @@ switch ($op) {
         }
         break;
 }
-include_once __DIR__ . '/admin_footer.php';
+require_once __DIR__ . '/admin_footer.php';

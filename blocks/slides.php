@@ -16,16 +16,15 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 slides.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
-include_once XOOPS_ROOT_PATH . '/modules/presenter/include/functions.php';
+require_once XOOPS_ROOT_PATH . '/modules/presenter/include/functions.php';
 /**
  * @param $options
  * @return array
  */
 function b_presenter_slides_show($options)
 {
-    include_once XOOPS_ROOT_PATH . '/modules/presenter/class/slides.php';
+    require_once XOOPS_ROOT_PATH . '/modules/presenter/class/slides.php';
     $myts = MyTextSanitizer::getInstance();
 
     $slides       = array();
@@ -33,7 +32,7 @@ function b_presenter_slides_show($options)
     $nb_slides    = $options[1];
     $lenght_title = $options[2];
 
-    $slidesHandler =& xoops_getModuleHandler('slides', 'presenter');
+    $slidesHandler = xoops_getModuleHandler('slides', 'presenter');
     $criteria      = new CriteriaCompo();
     array_shift($options);
     array_shift($options);
@@ -88,13 +87,13 @@ function b_presenter_slides_show($options)
  */
 function b_presenter_slides_edit($options)
 {
-    include_once XOOPS_ROOT_PATH . '/modules/presenter/class/presenter_slides.php';
+    require_once XOOPS_ROOT_PATH . '/modules/presenter/class/presenter_slides.php';
 
     $form = _MB_PRESENTER_DISPLAY . "\n";
-    $form .= "<input type='hidden' name='options[0]' value='" . $options[0] . "' />";
-    $form .= "<input name='options[1]' size='5' maxlength='255' value='" . $options[1] . "' type='text' />&nbsp;<br />";
-    $form .= _MB_PRESENTER_TITLELENGTH . " : <input name='options[2]' size='5' maxlength='255' value='" . $options[2] . "' type='text' /><br /><br />";
-    $slidesHandler =& xoops_getModuleHandler('slides', 'presenter');
+    $form          .= "<input type='hidden' name='options[0]' value='" . $options[0] . "'>";
+    $form          .= "<input name='options[1]' size='5' maxlength='255' value='" . $options[1] . "' type='text'>&nbsp;<br>";
+    $form          .= _MB_PRESENTER_TITLELENGTH . " : <input name='options[2]' size='5' maxlength='255' value='" . $options[2] . "' type='text'><br><br>";
+    $slidesHandler = xoops_getModuleHandler('slides', 'presenter');
     $criteria      = new CriteriaCompo();
     array_shift($options);
     array_shift($options);
@@ -103,13 +102,13 @@ function b_presenter_slides_edit($options)
     $criteria->setSort('slides_id');
     $criteria->setOrder('ASC');
     $slides_arr = $slidesHandler->getAll($criteria);
-    $form .= _MB_PRESENTER_CATTODISPLAY . "<br /><select name='options[]' multiple='multiple' size='5'>";
-    $form .= "<option value='0' " . (array_search(0, $options) === false ? "" : "selected='selected'") . ">" . _MB_PRESENTER_ALLCAT . "</option>";
+    $form       .= _MB_PRESENTER_CATTODISPLAY . "<br><select name='options[]' multiple='multiple' size='5'>";
+    $form       .= "<option value='0' " . (array_search(0, $options) === false ? '' : 'selected') . '>' . _MB_PRESENTER_ALLCAT . '</option>';
     foreach (array_keys($slides_arr) as $i) {
         $slides_id = $slides_arr[$i]->getVar('slides_id');
-        $form .= "<option value='" . $slides_id . "' " . (array_search($slides_id, $options) === false ? "" : "selected='selected'") . ">" . $slides_arr[$i]->getVar('slides_title') . "</option>";
+        $form      .= "<option value='" . $slides_id . "' " . (array_search($slides_id, $options) === false ? '' : 'selected') . '>' . $slides_arr[$i]->getVar('slides_title') . '</option>';
     }
-    $form .= "</select>";
+    $form .= '</select>';
 
     return $form;
 }

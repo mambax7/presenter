@@ -16,7 +16,6 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 admin.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 //Menu
 define('_AM_PRESENTER_STATISTICS', 'Presenter statistics');

@@ -16,13 +16,12 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 comment_new.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
-include dirname(dirname(__DIR__)) . '/mainfile.php';
-include_once XOOPS_ROOT_PATH . '/modules/presenter/class/slides.php';
-$com_itemid = isset($_REQUEST["com_itemid"]) ? (int)($_REQUEST["com_itemid"]) : 0;
+include __DIR__ . '/../../mainfile.php';
+require_once XOOPS_ROOT_PATH . '/modules/presenter/class/slides.php';
+$com_itemid = isset($_REQUEST['com_itemid']) ? (int)$_REQUEST['com_itemid'] : 0;
 if ($com_itemid > 0) {
-    $slidesHandler  =& xoops_getModuleHandler('slides', 'presenter');
+    $slidesHandler  = xoops_getModuleHandler('slides', 'presenter');
     $slides         = $slideshandler->get($com_itemid);
     $com_replytitle = $slides->getVar('slides_cid');
     include XOOPS_ROOT_PATH . '/include/comment_new.php';

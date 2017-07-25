@@ -16,18 +16,17 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 waiting.plugin.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 function b_waiting_presenter()
 {
-    $db  =& XoopsDatabaseFactory::getDatabaseConnection();
+    $db  = XoopsDatabaseFactory::getDatabaseConnection();
     $ret = array();
 
     // waiting categories
     $block  = array();
-    $result = $db->query("SELECT COUNT(*) FROM " . $db->prefix('presenter_categories') . " WHERE cat_waiting = 1");
+    $result = $db->query('SELECT COUNT(*) FROM ' . $db->prefix('presenter_categories') . ' WHERE cat_waiting = 1');
     if ($result) {
-        $block['adminlink'] = XOOPS_URL . "/modules/presenter/admin/categories.php?op=list_waiting";
+        $block['adminlink'] = XOOPS_URL . '/modules/presenter/admin/categories.php?op=list_waiting';
         list($block['pendingnum']) = $db->fetchRow($result);
         $block['lang_linkname'] = _MB_PRESENTER_CATEGORIES_WAITING;
     }
@@ -35,9 +34,9 @@ function b_waiting_presenter()
 
     // waiting slides
     $block  = array();
-    $result = $db->query("SELECT COUNT(*) FROM " . $db->prefix('presenter_slides') . " WHERE slides_waiting = 1");
+    $result = $db->query('SELECT COUNT(*) FROM ' . $db->prefix('presenter_slides') . ' WHERE slides_waiting = 1');
     if ($result) {
-        $block['adminlink'] = XOOPS_URL . "/modules/presenter/admin/slides.php?op=list_waiting";
+        $block['adminlink'] = XOOPS_URL . '/modules/presenter/admin/slides.php?op=list_waiting';
         list($block['pendingnum']) = $db->fetchRow($result);
         $block['lang_linkname'] = _MB_PRESENTER_SLIDES_WAITING;
     }

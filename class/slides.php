@@ -16,7 +16,6 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 slides.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
 // defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
@@ -80,7 +79,7 @@ class PresenterSlides extends XoopsObject
 
         $title = $this->isNew() ? sprintf(_AM_PRESENTER_SLIDES_ADD) : sprintf(_AM_PRESENTER_SLIDES_EDIT);
 
-        include_once(XOOPS_ROOT_PATH . '/class/xoopsformloader.php');
+        require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
@@ -151,17 +150,17 @@ class PresenterSlides extends XoopsObject
         // Slides_status
         $slides_status       = $this->isNew() ? 0 : $this->getVar('slides_status');
         $check_slides_status = new XoopsFormCheckBox(_AM_PRESENTER_SLIDES_STATUS, 'slides_status', $slides_status);
-        $check_slides_status->addOption(1, " ");
+        $check_slides_status->addOption(1, ' ');
         $form->addElement($check_slides_status);
         // Slides_waiting
         $slides_waiting       = $this->isNew() ? 0 : $this->getVar('slides_waiting');
         $check_slides_waiting = new XoopsFormCheckBox(_AM_PRESENTER_SLIDES_WAITING, 'slides_waiting', $slides_waiting);
-        $check_slides_waiting->addOption(1, " ");
+        $check_slides_waiting->addOption(1, ' ');
         $form->addElement($check_slides_waiting);
         // Slides_online
         $slides_online       = $this->isNew() ? 0 : $this->getVar('slides_online');
         $check_slides_online = new XoopsFormCheckBox(_AM_PRESENTER_SLIDES_ONLINE, 'slides_online', $slides_online);
-        $check_slides_online->addOption(1, " ");
+        $check_slides_online->addOption(1, ' ');
         $form->addElement($check_slides_online);
 
         $form->addElement(new XoopsFormHidden('op', 'save'));

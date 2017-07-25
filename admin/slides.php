@@ -16,20 +16,18 @@
  * @package         presenter
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
- * @version         $Id: 1.0 slides.php 11532 Wed 2013/08/28 4:00:27Z XOOPS Development Team $
  */
-include_once __DIR__ . '/admin_header.php';
+require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
 
-$currentFile = basename(__FILE__);
 //It recovered the value of argument op in URL$
 $op = presenter_CleanVars($_REQUEST, 'op', 'list', 'string');
-echo $adminMenu->addNavigation($currentFile);
+$adminObject->displayNavigation(basename(__FILE__));
 switch ($op) {
     case 'list':
     default:
-        $adminMenu->addItemButton(_AM_PRESENTER_ADD_SLIDES, 'slides.php?op=new', 'add');
-        echo $adminMenu->renderButton();
+        $adminObject->addItemButton(_AM_PRESENTER_ADD_SLIDES, 'slides.php?op=new', 'add');
+        $adminObject->displayButton('left');
         $criteria = new CriteriaCompo();
         $criteria->setSort('slides_id ASC, slides_id');
         $criteria->setOrder('ASC');
@@ -68,50 +66,50 @@ switch ($op) {
                         <th class='center'>" . _AM_PRESENTER_SLIDES_STATUS . "</th>
                         <th class='center'>" . _AM_PRESENTER_SLIDES_WAITING . "</th>
                         <th class='center'>" . _AM_PRESENTER_SLIDES_ONLINE . "</th>
-                        <th class='center width5'>" . _AM_PRESENTER_FORMACTION . "</th>
-                    </tr>";
+                        <th class='center width5'>" . _AM_PRESENTER_FORMACTION . '</th>
+                    </tr>';
 
-            $class = "odd";
+            $class = 'odd';
 
             foreach (array_keys($slides_arr) as $i) {
                 echo "<tr class='" . $class . "'>";
-                $class = ($class === "even") ? "odd" : "even";
-                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_cid')) . "</td>";
-                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_uid')) . "</td>";
-                echo "<td class='left'>" . $slides_arr[$i]->getVar('slides_title') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_content') . "</td>";
+                $class = ($class === 'even') ? 'odd' : 'even';
+                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_cid')) . '</td>';
+                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_uid')) . '</td>';
+                echo "<td class='left'>" . $slides_arr[$i]->getVar('slides_title') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_content') . '</td>';
 
-                echo "<td class='left'>" . $slides_arr[$i]->getVar('css_id') . "</td>";
-                echo "<td class='left'>" . $slides_arr[$i]->getVar('css_class') . "</td>";
+                echo "<td class='left'>" . $slides_arr[$i]->getVar('css_id') . '</td>';
+                echo "<td class='left'>" . $slides_arr[$i]->getVar('css_class') . '</td>';
 
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_transition_x') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_transition_y') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_transition_z') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_rotation_x') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_rotation_y') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_rotation_z') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_scale_x') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_scale_y') . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_scale_z') . "</td>";
-                echo "<td class='center'>" . formatTimeStamp($slides_arr[$i]->getVar('slides_created'), "S") . "</td>";
-                echo "<td class='center'>" . formatTimeStamp($slides_arr[$i]->getVar('slides_published'), "S") . "</td>";
-                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_position')) . "</td>";
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_online') == 1) ? _YES : _NO) . "</td>";
-                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_type')) . "</td>";
-                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_notes')) . "</td>";
-                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_mp3') . "</td>";
-                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_time')) . "</td>";
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_status') == 1) ? _YES : _NO) . "</td>";
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_waiting') == 1) ? _YES : _NO) . "</td>";
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_online') == 1) ? _YES : _NO) . "</td>";
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_transition_x') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_transition_y') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_transition_z') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_rotation_x') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_rotation_y') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_rotation_z') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_scale_x') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_scale_y') . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_scale_z') . '</td>';
+                echo "<td class='center'>" . formatTimestamp($slides_arr[$i]->getVar('slides_created'), 'S') . '</td>';
+                echo "<td class='center'>" . formatTimestamp($slides_arr[$i]->getVar('slides_published'), 'S') . '</td>';
+                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_position')) . '</td>';
+                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_online') == 1) ? _YES : _NO) . '</td>';
+                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_type')) . '</td>';
+                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_notes')) . '</td>';
+                echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_mp3') . '</td>';
+                echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_time')) . '</td>';
+                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_status') == 1) ? _YES : _NO) . '</td>';
+                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_waiting') == 1) ? _YES : _NO) . '</td>';
+                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_online') == 1) ? _YES : _NO) . '</td>';
 
                 echo "<td class='center width5'>
                     <a href='slides.php?op=edit&slides_id=" . $i . "'><img src=" . $pathIcon16 . "/edit.png alt='" . _EDIT . "' title='" . _EDIT . "'></a>
                     <a href='slides.php?op=delete&slides_id=" . $i . "'><img src=" . $pathIcon16 . "/delete.png alt='" . _DELETE . "' title='" . _DELETE . "'></a>
                     </td>";
-                echo "</tr>";
+                echo '</tr>';
             }
-            echo "</table><br /><br />";
+            echo '</table><br><br>';
         } else {
             echo "<table width='100%' cellspacing='1' class='outer'>
                     <tr>
@@ -145,16 +143,16 @@ switch ($op) {
                         <th class='center'>" . _AM_PRESENTER_SLIDES_ONLINE . "</th>
                         <th class='center width5'>" . _AM_PRESENTER_FORMACTION . "</th>
                     </tr><tr><td class='errorMsg' colspan='25'>There are no slides</td></tr>";
-            echo "</table><br /><br />";
+            echo '</table><br><br>';
         }
 
         break;
 
     case 'new':
-        $adminMenu->addItemButton(_AM_PRESENTER_SLIDES_LIST, 'slides.php', 'list');
-        echo $adminMenu->renderButton();
+        $adminObject->addItemButton(_AM_PRESENTER_SLIDES_LIST, 'slides.php', 'list');
+        $adminObject->displayButton('left');
 
-        $obj  =& $slidesHandler->create();
+        $obj  = $slidesHandler->create();
         $form = $obj->getForm();
         $form->display();
         break;
@@ -164,9 +162,9 @@ switch ($op) {
             redirect_header('slides.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
         }
         if (isset($_REQUEST['slides_id'])) {
-            $obj =& $slidesHandler->get($_REQUEST['slides_id']);
+            $obj = $slidesHandler->get($_REQUEST['slides_id']);
         } else {
-            $obj =& $slidesHandler->create();
+            $obj = $slidesHandler->create();
         }
 
         // Form save fields
@@ -193,7 +191,7 @@ switch ($op) {
         $obj->setVar('slides_online', (($_REQUEST['slides_online'] == 1) ? '1' : '0'));
         $obj->setVar('slides_type', $_REQUEST['slides_type']);
         $obj->setVar('slides_notes', $_REQUEST['slides_notes']);
-        include_once XOOPS_ROOT_PATH . '/class/uploader.php';
+        require_once XOOPS_ROOT_PATH . '/class/uploader.php';
         $uploaddir = XOOPS_UPLOAD_PATH . '/presenter/files/slides/';
         $uploader  = new XoopsMediaUploader($uploaddir, $GLOBALS['xoopsModuleConfig']['mimetypes'], $GLOBALS['xoopsModuleConfig']['maxsize'], null, null);
         if ($uploader->fetchMedia($_POST['xoops_upload_file'][0])) {
@@ -203,7 +201,7 @@ switch ($op) {
                 $errors = $uploader->getErrors();
                 redirect_header('javascript:history.go(-1)', 3, $errors);
             } else {
-                $obj->setVar("slides_mp3", $uploader->getSavedFileName());
+                $obj->setVar('slides_mp3', $uploader->getSavedFileName());
             }
         }
 
@@ -222,16 +220,16 @@ switch ($op) {
         break;
 
     case 'edit':
-        $adminMenu->addItemButton(_AM_PRESENTER_ADD_SLIDES, 'slides.php?op=new', 'add');
-        $adminMenu->addItemButton(_AM_PRESENTER_SLIDES_LIST, 'slides.php', 'list');
-        echo $adminMenu->renderButton();
+        $adminObject->addItemButton(_AM_PRESENTER_ADD_SLIDES, 'slides.php?op=new', 'add');
+        $adminObject->addItemButton(_AM_PRESENTER_SLIDES_LIST, 'slides.php', 'list');
+        $adminObject->displayButton('left');
         $obj  = $slidesHandler->get($_REQUEST['slides_id']);
         $form = $obj->getForm();
         $form->display();
         break;
 
     case 'delete':
-        $obj =& $slidesHandler->get($_REQUEST['slides_id']);
+        $obj = $slidesHandler->get($_REQUEST['slides_id']);
         if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 redirect_header('slides.php', 3, implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -246,4 +244,4 @@ switch ($op) {
         }
         break;
 }
-include_once __DIR__ . '/admin_footer.php';
+require_once __DIR__ . '/admin_footer.php';
