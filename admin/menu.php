@@ -11,11 +11,11 @@
 /**
  * presenter module for xoops
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         presenter
  * @since           2.5.5
- * @author          Michael Beck (aka Mamba) - <http://xoops.org>
+ * @author          Michael Beck (aka Mamba) - <https://xoops.org>
  * @version         $Id: 1.0 menu.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 

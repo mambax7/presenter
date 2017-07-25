@@ -1,4 +1,4 @@
 CREDITS
 =============
 
-Originally created by Mamba (http://xoops.org)
+Originally created by Mamba (https://xoops.org)

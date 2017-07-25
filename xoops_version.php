@@ -11,11 +11,11 @@
 /**
  * presenter module for xoops
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         presenter
  * @since           2.5.5
- * @author          XOOPS Development Team <name@site.com> - <http://xoops.org>
+ * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
  * @version         $Id: 1.0 xoops_version.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 // defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
@@ -28,7 +28,7 @@ $modversion = array(
     'description'         => _MI_PRESENTER_DESC,
     'author'              => "Michael Beck (aka Mamba)",
     'author_mail'         => "mambax7@gmail.com",
-    'author_website_url'  => "http://xoops.org",
+    'author_website_url'  => "https://xoops.org",
     'author_website_name' => "XOOPS Project",
     'credits'             => 'XOOPS Development Team',
     'license'             => 'GPL 2.0 or later',
@@ -53,9 +53,9 @@ $modversion = array(
     'modicons16'          => 'assets/images/icons/16',
     'modicons32'          => 'assets/images/icons/32',
     //About
-    'demo_site_url'       => "http://xoops.org",
+    'demo_site_url'       => "https://xoops.org",
     'demo_site_name'      => "XOOPS Demo Site",
-    'support_url'         => "http://xoops.org/modules/newbb",
+    'support_url'         => "https://xoops.org/modules/newbb",
     'support_name'        => "Support Forum",
     'module_website_url'  => "www.xoops.org",
     'module_website_name' => "XOOPS Project",

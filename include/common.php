@@ -11,11 +11,11 @@
 /**
  * presenter module for xoops
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         presenter
  * @since           2.5.5
- * @author          XOOPS Development Team <name@site.com> - <http://xoops.org>
+ * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
  * @version         $Id: 1.0 common.php 11532 Wed 2013/08/28 4:00:28Z XOOPS Development Team $
  */
 
@@ -45,5 +45,5 @@ if (!defined('PRESENTER_MODULE_PATH')) {
     define('PRESENTER_AUTHOR_LOGOIMG', $logo);
 }
 // module information
-$copyright = "<a href='http://xoops.org' title='XOOPS Project' target='_blank'>
+$copyright = "<a href='https://xoops.org' title='XOOPS Project' target='_blank'>
                      <img src='" . PRESENTER_AUTHOR_LOGOIMG . "' alt='XOOPS Project' /></a>";
