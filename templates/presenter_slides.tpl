@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=1024">
     <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="description"
+    <meta name="description"
           content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com.">
     <meta name="author" content="Bartek Szopka">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic"
@@ -71,33 +71,30 @@
 /*---------------------------------*/
 <div id="object" width="600" height="400">
 
-<div id="impress">
+    <div id="impress">
 
-    <{foreach item=slides from=$slides}>
-
-
-    <div
-    <{if $slides.css_id eq ''}> <{else}> id="<{$slides.css_id}>" <{/if}>
-    <{if $slides.css_class eq ''}> <{else}> class="<{$slides.css_class}>" <{/if}>
+        <{foreach item=slides from=$slides}>
+            <div
+                    <{if $slides.css_id eq ''}> <{else}> id="<{$slides.css_id}>" <{/if}>
+                    <{if $slides.css_class eq ''}> <{else}> class="<{$slides.css_class}>" <{/if}>
 
 
-    <{if $slides.slides_transition_x eq ''}> <{else}> data-x="<{$slides.slides_transition_x}>" <{/if}>
-    <{if $slides.slides_transition_y eq ''}> <{else}> data-y="<{$slides.slides_transition_y}>" <{/if}>
-    <{if $slides.slides_transition_z eq ''}> <{else}> data-z="<{$slides.slides_transition_z}>" <{/if}>
-    <{if $slides.slides_rotation_x eq ''}> <{else}> data-rotate-x="<{$slides.slides_rotation_x}>" <{/if}>
-    <{if $slides.slides_rotation_y eq ''}> <{else}> data-rotate-y="<{$slides.slides_rotation_y}>" <{/if}>
-    <{if $slides.slides_rotation_z eq ''}> <{else}> data-rotate-z="<{$slides.slides_rotation_z}>" <{/if}>
-    <{if $slides.slides_scale_x eq ''}> <{else}> data-scale="<{$slides.slides_scale_x}>" <{/if}>
-    <{if $slides.slides_scale_y eq ''}> <{else}> data-scale-y="<{$slides.slides_scale_y}>" <{/if}>
-    <{if $slides.slides_scale_z eq ''}> <{else}> data-scale-z="<{$slides.slides_scale_z}>"> <{/if}>
+                    <{if $slides.slides_transition_x eq ''}> <{else}> data-x="<{$slides.slides_transition_x}>" <{/if}>
+                    <{if $slides.slides_transition_y eq ''}> <{else}> data-y="<{$slides.slides_transition_y}>" <{/if}>
+                    <{if $slides.slides_transition_z eq ''}> <{else}> data-z="<{$slides.slides_transition_z}>" <{/if}>
+                    <{if $slides.slides_rotation_x eq ''}> <{else}> data-rotate-x="<{$slides.slides_rotation_x}>" <{/if}>
+                    <{if $slides.slides_rotation_y eq ''}> <{else}> data-rotate-y="<{$slides.slides_rotation_y}>" <{/if}>
+                    <{if $slides.slides_rotation_z eq ''}> <{else}> data-rotate-z="<{$slides.slides_rotation_z}>" <{/if}>
+                    <{if $slides.slides_scale_x eq ''}> <{else}> data-scale="<{$slides.slides_scale_x}>" <{/if}>
+                    <{if $slides.slides_scale_y eq ''}> <{else}> data-scale-y="<{$slides.slides_scale_y}>" <{/if}>
+                    <{if $slides.slides_scale_z eq ''}> <{else}> data-scale-z="<{$slides.slides_scale_z}>"> <{/if}>
 
-    <{$slides.slides_content}>
+                <{$slides.slides_content}>
+
+            </div>
+        <{/foreach}>
 
     </div>
-
-    <{/foreach}>
-
-</div>
 
 </div>
 

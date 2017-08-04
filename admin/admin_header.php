@@ -30,7 +30,7 @@ $pathModuleAdmin = $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin');
 //load handlers
 $categoriesHandler = xoops_getModuleHandler('categories', $thisModule);
 $slidesHandler     = xoops_getModuleHandler('slides', $thisModule);
-$myts = MyTextSanitizer::getInstance();
+$myts              = MyTextSanitizer::getInstance();
 if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
     require_once XOOPS_ROOT_PATH . '/class/template.php';
     $xoopsTpl = new XoopsTpl();

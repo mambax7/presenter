@@ -62,9 +62,9 @@ switch ($permission) {
         break;
 }
 
-$permform       = new XoopsGroupPermForm($formTitle, $module_id, $permName, $permDesc, 'admin/permissions.php');
+$permform      = new XoopsGroupPermForm($formTitle, $module_id, $permName, $permDesc, 'admin/permissions.php');
 $slidesHandler = xoops_getModuleHandler('slides', 'presenter');
-$criteria       = new CriteriaCompo();
+$criteria      = new CriteriaCompo();
 $criteria->setSort('slides_cid');
 $criteria->setOrder('ASC');
 $slides_arr = $slidesHandler->getObjects($criteria);
