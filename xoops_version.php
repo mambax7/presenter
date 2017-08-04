@@ -24,7 +24,7 @@ $moduleDirName = basename(__DIR__);
 $modversion = array(
 
     'version'             => 1.0,
-    'module_status'       => 'Beta 1',
+    'module_status'       => 'Beta 2',
     'release_data'        => '2017/07/20',
     'name'                => _MI_PRESENTER_NAME,
     'description'         => _MI_PRESENTER_DESC,
@@ -45,7 +45,7 @@ $modversion = array(
     'manual_file'         => XOOPS_URL . "/modules/$moduleDirName/docs/install.txt",
     'min_php'             => '5.5',
     'min_xoops'           => '2.5.9',
-    'min_admin'           => '1.1',
+    'min_admin'           => '1.2',
     'min_db'              => array('mysql' => '5.5'),
     'image'               => "assets/images/logoModule.png",
     'dirname'             => $moduleDirName,
@@ -80,6 +80,16 @@ $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
 // Tables
 $modversion['tables'][1] = 'presenter_categories';
 $modversion['tables'][2] = 'presenter_slides';
+
+// ------------------- Help files ------------------- //
+$modversion['helpsection'] = array(
+    ['name' => _MI_PRESENTER_OVERVIEW, 'link' => 'page=help'],
+    ['name' => _MI_PRESENTER_DISCLAIMER, 'link' => 'page=disclaimer'],
+    ['name' => _MI_PRESENTER_LICENSE, 'link' => 'page=license'],
+    ['name' => _MI_PRESENTER_SUPPORT, 'link' => 'page=support'],
+);
+
+
 // Templates
 $modversion['templates'][] = array('file' => 'presenter_header.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'presenter_index.tpl', 'description' => '');

@@ -1,11 +1,7 @@
-<div id='help-template' class='outer'>
-    <h1 class='head'>Help:
-        <a class='ui-corner-all tooltip' href='<{$xoops_url}>/modules/presenter/admin/index.php'
-           title='Back to the administration of presenter'> presenter <img src='<{xoAdminIcons home.png}>'
-                                                                           alt='Back to the Administration of presenter'>
-        </a></h1>
-    <!-- -----Help Content ---------- -->
-    <h4 class='odd'>Description</h4>
+<div id="help-template" class="outer">
+    <{include file=$smarty.const._MI_PRESENTER_HELP_HEADER}>
+
+    <h4 class="odd">DESCRIPTION</h4> <br>
     <p class='even'>
         This module is for doing following...<br><br>
     </p>

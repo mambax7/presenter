@@ -55,3 +55,16 @@ define('_MI_PRESENTER_SIZE', 'Max size of the uploaded file');
 define('_MI_PRESENTER_SIZE_DESC', 'Set the maximum size of the file that can be uploaded');
 define('_MI_PRESENTER_BOOKMARKS', 'Social Bookmarks');
 define('_MI_PRESENTER_BOOKMARKS_DESC', 'Allow Social Bookmarks to be included with the module');
+//1.0 Beta 2
+//Help
+define('_MI_PRESENTER_DIRNAME', basename(dirname(dirname(__DIR__))));
+define('_MI_PRESENTER_HELP_HEADER', __DIR__.'/help/helpheader.tpl');
+define('_MI_PRESENTER_BACK_2_ADMIN', 'Back to Administration of ');
+define('_MI_PRESENTER_OVERVIEW', 'Overview');
+
+//define('_MI_PRESENTER_HELP_DIR', __DIR__);
+
+//help multi-page
+define('_MI_PRESENTER_DISCLAIMER', 'Disclaimer');
+define('_MI_PRESENTER_LICENSE', 'License');
+define('_MI_PRESENTER_SUPPORT', 'Support');
