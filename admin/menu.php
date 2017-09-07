@@ -24,29 +24,33 @@ if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
 } else {
     $moduleHelper = Xmf\Module\Helper::getHelper('system');
 }
-$adminObject = \Xmf\Module\Admin::getInstance();
+
 
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
 //$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 
 $moduleHelper->loadLanguage('modinfo');
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => _AM_MODULEADMIN_HOME,
     'link'  => 'admin/index.php',
-    'icon'  => $pathIcon32 . '/home.png');
+    'icon'  => $pathIcon32 . '/home.png'
+];
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => _MI_PRESENTER_ADMENU2,
     'link'  => 'admin/categories.php',
-    'icon'  => $pathIcon32 . '/category.png');
+    'icon'  => $pathIcon32 . '/category.png'
+];
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => _MI_PRESENTER_ADMENU3,
     'link'  => 'admin/slides.php',
-    'icon'  => $pathIcon32 . '/watermark.png');
+    'icon'  => $pathIcon32 . '/watermark.png'
+];
 
-$adminmenu[] = array(
+$adminmenu[] = [
     'title' => _AM_MODULEADMIN_ABOUT,
     'link'  => 'admin/about.php',
-    'icon'  => $pathIcon32 . '/about.png');
+    'icon'  => $pathIcon32 . '/about.png'
+];

@@ -17,7 +17,7 @@
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
  */
-// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+// defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 class PresenterSlides extends XoopsObject
 {
@@ -91,7 +91,7 @@ class PresenterSlides extends XoopsObject
         // Slides_title
         $form->addElement(new XoopsFormText(_AM_PRESENTER_SLIDES_TITLE, 'slides_title', 50, 255, $this->getVar('slides_title')), true);
         // Slides_content
-        $editor_configs           = array();
+        $editor_configs           = [];
         $editor_configs['name']   = 'slides_content';
         $editor_configs['value']  = $this->getVar('slides_content', 'e');
         $editor_configs['rows']   = 10;
@@ -134,7 +134,7 @@ class PresenterSlides extends XoopsObject
         // Slides_type
         $form->addElement(new XoopsFormText(_AM_PRESENTER_SLIDES_TYPE, 'slides_type', 50, 255, $this->getVar('slides_type')), false);
         // Slides_notes
-        $editor_configs           = array();
+        $editor_configs           = [];
         $editor_configs['name']   = 'slides_notes';
         $editor_configs['value']  = $this->getVar('slides_notes', 'e');
         $editor_configs['rows']   = 10;

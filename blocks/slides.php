@@ -27,7 +27,7 @@ function b_presenter_slides_show($options)
     require_once XOOPS_ROOT_PATH . '/modules/presenter/class/slides.php';
     $myts = MyTextSanitizer::getInstance();
 
-    $slides       = array();
+    $slides       = [];
     $type_block   = $options[0];
     $nb_slides    = $options[1];
     $lenght_title = $options[2];

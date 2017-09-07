@@ -20,10 +20,10 @@
 function b_waiting_presenter()
 {
     $db  = XoopsDatabaseFactory::getDatabaseConnection();
-    $ret = array();
+    $ret = [];
 
     // waiting categories
-    $block  = array();
+    $block  = [];
     $result = $db->query('SELECT COUNT(*) FROM ' . $db->prefix('presenter_categories') . ' WHERE cat_waiting = 1');
     if ($result) {
         $block['adminlink'] = XOOPS_URL . '/modules/presenter/admin/categories.php?op=list_waiting';
@@ -33,7 +33,7 @@ function b_waiting_presenter()
     $ret[] = $block;
 
     // waiting slides
-    $block  = array();
+    $block  = [];
     $result = $db->query('SELECT COUNT(*) FROM ' . $db->prefix('presenter_slides') . ' WHERE slides_waiting = 1');
     if ($result) {
         $block['adminlink'] = XOOPS_URL . '/modules/presenter/admin/slides.php?op=list_waiting';

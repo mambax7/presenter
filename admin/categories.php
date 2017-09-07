@@ -158,7 +158,7 @@ switch ($op) {
                 echo $obj->getHtmlErrors();
             }
         } else {
-            xoops_confirm(array('ok' => 1, 'cat_id' => $_REQUEST['cat_id'], 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_PRESENTER_FORMSUREDEL, $obj->getVar('cat_id')));
+            xoops_confirm(['ok' => 1, 'cat_id' => $_REQUEST['cat_id'], 'op' => 'delete'], $_SERVER['REQUEST_URI'], sprintf(_AM_PRESENTER_FORMSUREDEL, $obj->getVar('cat_id')));
         }
         break;
 }

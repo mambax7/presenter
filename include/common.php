@@ -18,7 +18,7 @@
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 //$thisPath = dirname(__DIR__);
 //require_once $thisPath.'/admin/header.php';

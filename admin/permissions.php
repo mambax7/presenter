@@ -25,7 +25,7 @@ if (!empty($_POST['submit'])) {
 $adminObject->displayNavigation(basename(__FILE__));
 
 $permission                = presenter_CleanVars($_POST, 'permission', 1, 'int');
-$selected                  = array('', '', '');
+$selected                  = ['', '', ''];
 $selected[$permission - 1] = ' selected';
 
 echo "

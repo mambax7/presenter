@@ -240,7 +240,7 @@ switch ($op) {
                 echo $obj->getHtmlErrors();
             }
         } else {
-            xoops_confirm(array('ok' => 1, 'slides_id' => $_REQUEST['slides_id'], 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_PRESENTER_FORMSUREDEL, $obj->getVar('slides_id')));
+            xoops_confirm(['ok' => 1, 'slides_id' => $_REQUEST['slides_id'], 'op' => 'delete'], $_SERVER['REQUEST_URI'], sprintf(_AM_PRESENTER_FORMSUREDEL, $obj->getVar('slides_id')));
         }
         break;
 }

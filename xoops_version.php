@@ -17,11 +17,11 @@
  * @since           2.5.5
  * @author          XOOPS Development Team <name@site.com> - <https://xoops.org>
  */
-// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+// defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 $moduleDirName = basename(__DIR__);
 
-$modversion = array(
+$modversion = [
 
     'version'             => 1.0,
     'module_status'       => 'Beta 2',
@@ -46,7 +46,7 @@ $modversion = array(
     'min_php'             => '5.5',
     'min_xoops'           => '2.5.9',
     'min_admin'           => '1.2',
-    'min_db'              => array('mysql' => '5.5'),
+    'min_db'              => ['mysql' => '5.5'],
     'image'               => "assets/images/logoModule.png",
     'dirname'             => $moduleDirName,
     // Local path icons
@@ -73,7 +73,7 @@ $modversion = array(
     // Scripts to run upon installation or update
     'onInstall'           => 'include/oninstall.php',
     'onUpdate'            => 'include/onupdate.php'
-);
+];
 
 // Mysql file
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
@@ -82,25 +82,25 @@ $modversion['tables'][1] = 'presenter_categories';
 $modversion['tables'][2] = 'presenter_slides';
 
 // ------------------- Help files ------------------- //
-$modversion['helpsection'] = array(
+$modversion['helpsection'] = [
     ['name' => _MI_PRESENTER_OVERVIEW, 'link' => 'page=help'],
     ['name' => _MI_PRESENTER_DISCLAIMER, 'link' => 'page=disclaimer'],
     ['name' => _MI_PRESENTER_LICENSE, 'link' => 'page=license'],
     ['name' => _MI_PRESENTER_SUPPORT, 'link' => 'page=support'],
-);
+];
 
 
 // Templates
-$modversion['templates'][] = array('file' => 'presenter_header.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'presenter_index.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'presenter_categories.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'presenter_slides.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'presenter_footer.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'presenter_iframe.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'presenter_iframeslides.tpl', 'description' => '');
+$modversion['templates'][] = ['file' => 'presenter_header.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'presenter_index.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'presenter_categories.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'presenter_slides.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'presenter_footer.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'presenter_iframe.tpl', 'description' => ''];
+$modversion['templates'][] = ['file' => 'presenter_iframeslides.tpl', 'description' => ''];
 
 //Blocks
-$modversion['blocks'][] = array(
+$modversion['blocks'][] = [
     'file'        => 'slides.php',
     'name'        => _MI_PRESENTER_SLIDES_BLOCK,
     'description' => '',
@@ -108,12 +108,12 @@ $modversion['blocks'][] = array(
     'edit_func'   => 'b_presenter_slides_edit',
     'options'     => 'slides|5|25|0',
     'template'    => 'slides_block.tpl'
-);
+];
 
 // Config
 xoops_load('xoopseditorhandler');
 $editorHandler          = XoopsEditorHandler::getInstance();
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'presenter_editor',
     'title'       => '_MI_PRESENTER_EDITOR',
     'description' => '_MI_PRESENTER_EDITOR_DESC',
@@ -121,36 +121,36 @@ $modversion['config'][] = array(
     'valuetype'   => 'text',
     'options'     => array_flip($editorHandler->getList()),
     'default'     => 'dhtml'
-);
+];
 
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'keywords',
     'title'       => '_MI_PRESENTER_KEYWORDS',
     'description' => '_MI_PRESENTER_KEYWORDS_DESC',
     'formtype'    => 'textbox',
     'valuetype'   => 'text',
     'default'     => 'presenter, slides'
-);
+];
 
 //Uploads : filesize of slides_mp3
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'filesize',
     'title'       => '_MI_PRESENTER_SIZE',
     'description' => '_MI_PRESENTER_SIZE_DESC',
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => 10485760
-);
+];
 
 //Uploads : filemimetypes of slides_mp3
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'filemimetypes',
     'title'       => '_MI_PRESENTER_MIMETYPES',
     'description' => '_MI_PRESENTER_MIMETYPES_DESC',
     'formtype'    => 'select_multi',
     'valuetype'   => 'array',
-    'default'     => array('image/gif', 'image/jpeg', 'image/png'),
-    'options'     => array(
+    'default'     => ['image/gif', 'image/jpeg', 'image/png'],
+    'options'     => [
         'bmp'   => 'image/bmp',
         'gif'   => 'image/gif',
         'pjpeg' => 'image/pjpeg',
@@ -158,50 +158,50 @@ $modversion['config'][] = array(
         'jpg'   => 'image/jpg',
         'jpe'   => 'image/jpe',
         'png'   => 'image/png'
-    )
-);
+    ]
+];
 
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'adminpager',
     'title'       => '_MI_PRESENTER_ADMINPAGER',
     'description' => '_MI_PRESENTER_ADMINPAGER_DESC',
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => 10
-);
+];
 
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'userpager',
     'title'       => '_MI_PRESENTER_USERPAGER',
     'description' => '_MI_PRESENTER_USERPAGER_DESC',
     'formtype'    => 'textbox',
     'valuetype'   => 'int',
     'default'     => 10
-);
+];
 
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'advertise',
     'title'       => '_MI_PRESENTER_ADVERTISE',
     'description' => '_MI_PRESENTER_ADVERTISE_DESC',
     'formtype'    => 'textarea',
     'valuetype'   => 'text',
     'default'     => ''
-);
+];
 
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'bookmarks',
     'title'       => '_MI_PRESENTER_BOOKMARKS',
     'description' => '_MI_PRESENTER_BOOKMARKS_DESC',
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => 0
-);
+];
 
-$modversion['config'][] = array(
+$modversion['config'][] = [
     'name'        => 'fbcomments',
     'title'       => '_MI_PRESENTER_FBCOMMENTS',
     'description' => '_MI_PRESENTER_FBCOMMENTS_DESC',
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => 0
-);
+];
