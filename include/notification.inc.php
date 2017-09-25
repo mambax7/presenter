@@ -25,7 +25,7 @@ function presenter_notify_iteminfo($category, $item_id)
 {
     global $xoopsModule, $xoopsModuleConfig, $xoopsConfig;
 
-    if (empty($xoopsModule) || $xoopsModule->getVar('dirname') != 'presenter') {
+    if (empty($xoopsModule) || 'presenter' != $xoopsModule->getVar('dirname')) {
         /** @var XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
         $module        = $moduleHandler->getByDirname('presenter');
@@ -38,7 +38,7 @@ function presenter_notify_iteminfo($category, $item_id)
 
     xoops_loadLanguage('main', 'presenter');
 
-    if ($category === 'global') {
+    if ('global' === $category) {
         $item['name'] = '';
         $item['url']  = '';
 
@@ -46,7 +46,7 @@ function presenter_notify_iteminfo($category, $item_id)
     }
 
     global $xoopsDB;
-    if ($category === 'category') {
+    if ('category' === $category) {
         // Assume we have a valid category id
         $sql          = 'SELECT slides_cid FROM ' . $xoopsDB->prefix('presenter_slides') . ' WHERE slides_cid = ' . $item_id;
         $result       = $xoopsDB->query($sql); // TODO: error check
@@ -57,7 +57,7 @@ function presenter_notify_iteminfo($category, $item_id)
         return $item;
     }
 
-    if ($category === 'slides') {
+    if ('slides' === $category) {
         // Assume we have a valid link id
         $sql          = 'SELECT slides_cid, slides_cid FROM ' . $xoopsDB->prefix('slides') . ' WHERE slides_id = ' . $item_id;
         $result       = $xoopsDB->query($sql); // TODO: error check

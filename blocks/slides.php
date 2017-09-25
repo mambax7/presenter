@@ -103,10 +103,10 @@ function b_presenter_slides_edit($options)
     $criteria->setOrder('ASC');
     $slides_arr = $slidesHandler->getAll($criteria);
     $form       .= _MB_PRESENTER_CATTODISPLAY . "<br><select name='options[]' multiple='multiple' size='5'>";
-    $form       .= "<option value='0' " . (array_search(0, $options) === false ? '' : 'selected') . '>' . _MB_PRESENTER_ALLCAT . '</option>';
+    $form       .= "<option value='0' " . (false === array_search(0, $options) ? '' : 'selected') . '>' . _MB_PRESENTER_ALLCAT . '</option>';
     foreach (array_keys($slides_arr) as $i) {
         $slides_id = $slides_arr[$i]->getVar('slides_id');
-        $form      .= "<option value='" . $slides_id . "' " . (array_search($slides_id, $options) === false ? '' : 'selected') . '>' . $slides_arr[$i]->getVar('slides_title') . '</option>';
+        $form      .= "<option value='" . $slides_id . "' " . (false === array_search($slides_id, $options) ? '' : 'selected') . '>' . $slides_arr[$i]->getVar('slides_title') . '</option>';
     }
     $form .= '</select>';
 

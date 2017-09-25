@@ -73,7 +73,7 @@ switch ($op) {
 
             foreach (array_keys($slides_arr) as $i) {
                 echo "<tr class='" . $class . "'>";
-                $class = ($class === 'even') ? 'odd' : 'even';
+                $class = ('even' === $class) ? 'odd' : 'even';
                 echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_cid')) . '</td>';
                 echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_uid')) . '</td>';
                 echo "<td class='left'>" . $slides_arr[$i]->getVar('slides_title') . '</td>';
@@ -94,14 +94,14 @@ switch ($op) {
                 echo "<td class='center'>" . formatTimestamp($slides_arr[$i]->getVar('slides_created'), 'S') . '</td>';
                 echo "<td class='center'>" . formatTimestamp($slides_arr[$i]->getVar('slides_published'), 'S') . '</td>';
                 echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_position')) . '</td>';
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_online') == 1) ? _YES : _NO) . '</td>';
+                echo "<td class='center'>" . ((1 == $slides_arr[$i]->getVar('slides_online')) ? _YES : _NO) . '</td>';
                 echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_type')) . '</td>';
                 echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_notes')) . '</td>';
                 echo "<td class='center'>" . $slides_arr[$i]->getVar('slides_mp3') . '</td>';
                 echo "<td class='center'>" . strip_tags($slides_arr[$i]->getVar('slides_time')) . '</td>';
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_status') == 1) ? _YES : _NO) . '</td>';
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_waiting') == 1) ? _YES : _NO) . '</td>';
-                echo "<td class='center'>" . (($slides_arr[$i]->getVar('slides_online') == 1) ? _YES : _NO) . '</td>';
+                echo "<td class='center'>" . ((1 == $slides_arr[$i]->getVar('slides_status')) ? _YES : _NO) . '</td>';
+                echo "<td class='center'>" . ((1 == $slides_arr[$i]->getVar('slides_waiting')) ? _YES : _NO) . '</td>';
+                echo "<td class='center'>" . ((1 == $slides_arr[$i]->getVar('slides_online')) ? _YES : _NO) . '</td>';
 
                 echo "<td class='center width5'>
                     <a href='slides.php?op=edit&slides_id=" . $i . "'><img src=" . $pathIcon16 . "/edit.png alt='" . _EDIT . "' title='" . _EDIT . "'></a>
@@ -188,7 +188,7 @@ switch ($op) {
         $obj->setVar('slides_created', strtotime($_REQUEST['slides_created']));
         $obj->setVar('slides_published', strtotime($_REQUEST['slides_published']));
         $obj->setVar('slides_position', $_REQUEST['slides_position']);
-        $obj->setVar('slides_online', (($_REQUEST['slides_online'] == 1) ? '1' : '0'));
+        $obj->setVar('slides_online', ((1 == $_REQUEST['slides_online']) ? '1' : '0'));
         $obj->setVar('slides_type', $_REQUEST['slides_type']);
         $obj->setVar('slides_notes', $_REQUEST['slides_notes']);
         require_once XOOPS_ROOT_PATH . '/class/uploader.php';
@@ -206,9 +206,9 @@ switch ($op) {
         }
 
         $obj->setVar('slides_time', $_REQUEST['slides_time']);
-        $obj->setVar('slides_status', (($_REQUEST['slides_status'] == 1) ? '1' : '0'));
-        $obj->setVar('slides_waiting', (($_REQUEST['slides_waiting'] == 1) ? '1' : '0'));
-        $obj->setVar('slides_online', (($_REQUEST['slides_online'] == 1) ? '1' : '0'));
+        $obj->setVar('slides_status', ((1 == $_REQUEST['slides_status']) ? '1' : '0'));
+        $obj->setVar('slides_waiting', ((1 == $_REQUEST['slides_waiting']) ? '1' : '0'));
+        $obj->setVar('slides_online', ((1 == $_REQUEST['slides_online']) ? '1' : '0'));
 
         if ($slidesHandler->insert($obj)) {
             redirect_header('slides.php?op=list', 2, _AM_PRESENTER_FORMOK);
@@ -230,7 +230,7 @@ switch ($op) {
 
     case 'delete':
         $obj = $slidesHandler->get($_REQUEST['slides_id']);
-        if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
+        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 redirect_header('slides.php', 3, implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }

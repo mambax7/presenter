@@ -29,7 +29,7 @@ function presenter_search($queryarray, $andor, $limit, $offset, $userid)
 
     $sql = 'SELECT slides_id, slides_cid FROM ' . $xoopsDB->prefix('slides') . ' WHERE slides_online = 1';
 
-    if ($userid != 0) {
+    if (0 != $userid) {
         $sql .= ' AND slides_submitter=' . (int)$userid;
     }
 

@@ -51,7 +51,7 @@ switch ($op) {
 
             foreach (array_keys($categories_arr) as $i) {
                 echo "<tr class='" . $class . "'>";
-                $class = ($class === 'even') ? 'odd' : 'even';
+                $class = ('even' === $class) ? 'odd' : 'even';
                 echo "<td class='left'><img src='" . PRESENTER_URL . "/assets/images/icons/16/arrow.gif'>&nbsp;" . $categories_arr[$i]->getVar('cat_title') . '</td>';
                 echo "<td class='center'>" . strip_tags($categories_arr[$i]->getVar('cat_desc')) . '</td>';
                 $cat_image = $categories_arr[$i]->getVar('cat_image');
@@ -148,7 +148,7 @@ switch ($op) {
 
     case 'delete':
         $obj = $categoriesHandler->get($_REQUEST['cat_id']);
-        if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
+        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 redirect_header('categories.php', 3, implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
